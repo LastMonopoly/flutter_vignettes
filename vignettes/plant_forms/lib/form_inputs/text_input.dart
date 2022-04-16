@@ -46,7 +46,7 @@ class _TextInputState extends State<TextInput> {
     super.initState();
     // Reset the valid state on notifier change
     if (widget.valueNotifier != null) {
-      widget.valueNotifier.addListener(()=>_isValid = false);
+      widget.valueNotifier.addListener(() => _isValid = false);
     }
   }
 
@@ -77,14 +77,18 @@ class _TextInputState extends State<TextInput> {
       child: Stack(
         overflow: Overflow.visible,
         children: <Widget>[
-          if (widget.label.isNotEmpty) Positioned(top: -24, child: Text(widget.label, style: Styles.inputLabel)),
+          if (widget.label.isNotEmpty)
+            Positioned(
+                top: -24, child: Text(widget.label, style: Styles.inputLabel)),
           TextFormField(
             initialValue: _getInitialValue(),
             style: Styles.orderTotalLabel,
             enabled: widget.isActive,
             onChanged: _handleChange,
             keyboardType: _setKeyboardType(),
-            autovalidate: _isAutoValidating,
+            autovalidateMode: _isAutoValidating
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
             validator: _validateField,
             decoration: Styles.getInputDecoration(helper: widget.helper),
           ),
@@ -97,7 +101,8 @@ class _TextInputState extends State<TextInput> {
             Positioned(
               top: 8,
               right: 14,
-              child: Text(_errorText.toUpperCase(), style: Styles.labelNotValid),
+              child:
+                  Text(_errorText.toUpperCase(), style: Styles.labelNotValid),
             ),
         ],
       ),
@@ -107,13 +112,15 @@ class _TextInputState extends State<TextInput> {
   String _getLabel() {
     String label = '';
     if (!widget.isRequired && _value.isEmpty) label = 'Optional';
-    if (_value.isNotEmpty && widget.label.isEmpty || _getInitialValue().isNotEmpty) return widget.helper;
+    if (_value.isNotEmpty && widget.label.isEmpty ||
+        _getInitialValue().isNotEmpty) return widget.helper;
     return label;
   }
 
   String _getInitialValue() {
     // initial value established from parent
-    if (widget.initialValue != null && widget.initialValue.isNotEmpty) return widget.initialValue;
+    if (widget.initialValue != null && widget.initialValue.isNotEmpty)
+      return widget.initialValue;
     return '';
   }
 

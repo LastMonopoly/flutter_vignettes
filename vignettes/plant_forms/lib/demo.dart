@@ -16,9 +16,7 @@ class SharedFormState {
   SharedFormState();
 }
 
-
 class _PlantFormsDemoState extends State<PlantFormsDemo> {
-
   GlobalKey<NavigatorState> navKey = new GlobalKey();
 
   @override
@@ -37,7 +35,8 @@ class _PlantFormsDemoState extends State<PlantFormsDemo> {
             child: Navigator(
               key: navKey,
               onGenerateRoute: (route) {
-                return StackPagesRoute(previousPages: [], enterPage: PlantFormSummary());
+                return StackPagesRoute(
+                    previousPages: [], enterPage: PlantFormSummary());
               },
             ),
           ),
@@ -49,7 +48,8 @@ class _PlantFormsDemoState extends State<PlantFormsDemo> {
   Future<bool> _handleBackPop() async {
     if (navKey.currentState.canPop()) {
       //If the pop worked, return false, preventing any pops in the MaterialApp's navigator
-      return !navKey.currentState.pop();
+      navKey.currentState.pop();
+      return false;
     }
     return true;
   }

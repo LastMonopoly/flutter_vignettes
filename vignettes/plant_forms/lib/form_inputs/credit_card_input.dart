@@ -82,7 +82,9 @@ class _CreditCardInfoInputState extends State<CreditCardInfoInput> {
             style: Styles.orderTotalLabel,
             onChanged: _handleChange,
             keyboardType: TextInputType.number,
-            autovalidate: _isAutoValidating,
+            autovalidateMode: _isAutoValidating
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
             validator: _validateField,
             decoration: Styles.getInputDecoration(helper: widget.helper),
           ),
