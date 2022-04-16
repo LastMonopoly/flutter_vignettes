@@ -36,7 +36,15 @@ dependencies:
   # cupertino_icons: ^1.0.2
   
   shared:
-      path: ../_shared
+    path: ../_shared
+  carousel:
+    path: ../carousel
+  chart:
+    path: ../chart
+  galaxy:
+    path: ../galaxy
+  zoom_animation:
+    path: ../zoom_animation
 
 dev_dependencies:
   flutter_test:
