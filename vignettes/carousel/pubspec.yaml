@@ -1,0 +1,45 @@
+name: carousel
+description:
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+
+  shared:
+      path: ../_shared
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+      - images/noise.png
+      - images/artist_1.png
+      - images/artist_2.png
+      - images/artist_3.png
+      - packages/carousel/assets/torus.obj
+      - packages/carousel/assets/torus.mtl
+      - packages/carousel/assets/star.obj
+      - packages/carousel/assets/star.mtl
+      - packages/carousel/assets/cube.obj
+      - packages/carousel/assets/cube.mtl
+
+  fonts:
+      - family: Roboto
+        fonts:
+          - asset: fonts/Roboto-Bold.ttf
+            weight: 600
+      - family: Staatliches
+        fonts:
+          - asset: fonts/Staatliches-Regular.ttf
+
