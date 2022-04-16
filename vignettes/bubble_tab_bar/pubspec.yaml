@@ -1,6 +1,6 @@
 name: bubble_tab_bar
 description: Example of a custom nav bar that changes the size of it's buttons when selected
-
+publish_to: none
 version: 1.0.0+1
 
 environment:

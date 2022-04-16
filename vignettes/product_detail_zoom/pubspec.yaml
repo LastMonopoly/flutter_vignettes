@@ -1,6 +1,6 @@
 name: product_detail_zoom
 description: 3D Product Detail Zoom.
-
+publish_to: none
 version: 1.0.0+1
 
 environment:
