@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+// import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
 import 'dart:ui';
@@ -11,11 +11,7 @@ class RenderWidgetMask extends RenderStack {
       AlignmentGeometry alignment,
       TextDirection textDirection,
       StackFit fit})
-      : super(
-            children: children,
-            alignment: alignment,
-            textDirection: textDirection,
-            fit: fit);
+      : super(children: children, alignment: alignment, textDirection: textDirection, fit: fit);
 
   @override
   void paintStack(context, offset) {
@@ -33,14 +29,12 @@ class RenderWidgetMask extends RenderStack {
     };
 
     final paintMask = (PaintingContext context, Offset offset) {
-      context.paintChild(firstChild,
-          offset + (firstChild.parentData as StackParentData).offset);
+      context.paintChild(firstChild, offset + (firstChild.parentData as StackParentData).offset);
     };
 
     final paintEverything = (PaintingContext context, Offset offset) {
       paintContent(context, offset);
-      context.canvas
-          .saveLayer(offset & size, Paint()..blendMode = BlendMode.dstIn);
+      context.canvas.saveLayer(offset & size, Paint()..blendMode = BlendMode.dstIn);
       paintMask(context, offset);
       context.canvas.restore();
     };

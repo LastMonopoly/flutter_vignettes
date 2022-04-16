@@ -52,12 +52,12 @@ class Indie3dPage extends StatelessWidget {
   @override
   Widget build(context) {
     final appSize = MediaQuery.of(context).size;
-    final textScale = appSize.aspectRatio > 1? 1.15 : .8;
+    final textScale = appSize.aspectRatio > 1 ? 1.15 : .8;
     return Container(
       color: backgroundColor,
       child: Stack(
         children: [
-          if (controller.initialized) ... {
+          if (controller.initialized) ...{
             BlendMask(
               blendMode: BlendMode.hardLight,
               opacity: backgroundShapeOpacity,
@@ -66,7 +66,7 @@ class Indie3dPage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: appSize.height * (appSize.aspectRatio > 1? 1 : .80),
+                height: appSize.height * (appSize.aspectRatio > 1 ? 1 : .80),
                 child: Image(fit: BoxFit.fitHeight, image: image),
               ),
             ),
@@ -85,22 +85,24 @@ class Indie3dPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       _buildClippedText(topTitle, topTitleClipProgress, 72 * textScale, 0, 6, 1),
-                      _buildClippedText(bottomTitle, bottomTitleClipProgress, 120 * textScale * bottomTitleScale, -10, 8, .9),
+                      _buildClippedText(bottomTitle, bottomTitleClipProgress,
+                          120 * textScale * bottomTitleScale, -10, 8, .9),
                     ],
                   ),
                 ),
               ),
             ),
             BlendMask(
-              opacity: 0.24,
+              opacity: 0.2,
               blendMode: BlendMode.colorDodge,
               child: Image(
                 width: appSize.width,
+                height: appSize.height,
                 fit: BoxFit.none,
                 image: AssetImage('images/noise.png', package: App.pkg),
               ),
             ),
-          } else ... {
+          } else ...{
             Center(
               child: Text(
                 'Loading assets...',
@@ -153,7 +155,8 @@ class Indie3dPage extends StatelessWidget {
     );
   }
 
-  ClipRect _buildClippedText(String text, double progress, double fontSize, double yOffset, double spacing, double height) {
+  ClipRect _buildClippedText(String text, double progress, double fontSize, double yOffset,
+      double spacing, double height) {
     return ClipRect(
       clipper: _Indie3dTextClipper(height: progress * fontSize, y: yOffset),
       child: Text(

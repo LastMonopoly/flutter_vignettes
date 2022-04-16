@@ -5,14 +5,12 @@ import './indie_app_bar.dart';
 import './page.dart';
 import 'main.dart';
 
-
 class Indie3dHome extends StatefulWidget {
   @override
   State createState() => _Indie3dHomeState();
 }
 
 class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin {
-
   AnimationController _page0TopTitleController;
   AnimationController _page0BottomTitleController;
   AnimationController _page1TopTitleController;
@@ -25,7 +23,6 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
 
   @override
   void initState() {
-
     const duration = Duration(milliseconds: 400);
 
     _page0TopTitleController = AnimationController(vsync: this, duration: duration, value: 1.0);
@@ -46,8 +43,7 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
       _page2BottomTitleController,
       _controller,
     ]).addListener(() {
-      setState(() {
-      });
+      setState(() {});
     });
 
     super.initState();
@@ -90,7 +86,7 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
               alignment: Alignment.bottomCenter,
               child: Padding(
                   padding: EdgeInsets.only(bottom: 32),
-                  child: Indie3dNavigationIndicator(pageIndex: _pageIndex,)),
+                  child: Indie3dNavigationIndicator(pageIndex: _pageIndex)),
             )
           ],
         ),
@@ -163,15 +159,25 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
   bool _handleScroll(ScrollUpdateNotification scrollUpdate) {
     setState(() {
       final appSize = MediaQuery.of(context).size;
-      double pageProgress = (1.0 - ((scrollUpdate.metrics.pixels / appSize.width) - _pageIndex)
-          .abs().clamp(0.0, 1.0)) * 2.0 - 1.0;
+      double pageProgress = (1.0 -
+                  ((scrollUpdate.metrics.pixels / appSize.width) - _pageIndex)
+                      .abs()
+                      .clamp(0.0, 1.0)) *
+              2.0 -
+          1.0;
       _controller.cameraOffset = (1 - pageProgress) * 8.0 * scrollUpdate.scrollDelta.sign;
 
       double animValue = 0;
       switch (_pageIndex) {
-        case 0: animValue = _page0TopTitleController.value; break;
-        case 1: animValue = _page1TopTitleController.value; break;
-        case 2: animValue = _page2TopTitleController.value; break;
+        case 0:
+          animValue = _page0TopTitleController.value;
+          break;
+        case 1:
+          animValue = _page1TopTitleController.value;
+          break;
+        case 2:
+          animValue = _page2TopTitleController.value;
+          break;
       }
 
       if (animValue != 0) {
@@ -200,9 +206,8 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
         case 0:
           if (pageProgress > 0.99) {
             _page0TopTitleController.animateTo(1.0);
-            Future.delayed(Duration(milliseconds: 200),
-              () => _page0BottomTitleController.animateTo(1.0)
-            );
+            Future.delayed(
+                Duration(milliseconds: 200), () => _page0BottomTitleController.animateTo(1.0));
           }
           _page1TopTitleController.reset();
           _page1BottomTitleController.reset();
@@ -214,9 +219,8 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
           _page0BottomTitleController.reset();
           if (pageProgress > 0.99) {
             _page1TopTitleController.animateTo(1.0);
-            Future.delayed(Duration(milliseconds: 200),
-              () => _page1BottomTitleController.animateTo(1.0)
-            );
+            Future.delayed(
+                Duration(milliseconds: 200), () => _page1BottomTitleController.animateTo(1.0));
           }
           _page2TopTitleController.reset();
           _page2BottomTitleController.reset();
@@ -228,9 +232,8 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
           _page1BottomTitleController.reset();
           if (pageProgress > 0.99) {
             _page2TopTitleController.animateTo(1.0);
-            Future.delayed(Duration(milliseconds: 200),
-              () => _page2BottomTitleController.animateTo(1.0)
-            );
+            Future.delayed(
+                Duration(milliseconds: 200), () => _page2BottomTitleController.animateTo(1.0));
           }
           break;
       }
@@ -248,8 +251,4 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
       _pageIndex = page;
     });
   }
-
 }
-
-
-

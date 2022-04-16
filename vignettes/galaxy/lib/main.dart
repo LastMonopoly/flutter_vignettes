@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shared/env.dart';
 
 import 'demo.dart';
@@ -13,10 +12,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays(const []);
-
-    return MaterialApp(
-      home: ConstellationsListDemo(),
-    );
+    // SystemChrome.setEnabledSystemUIOverlays(const []);
+    return ConstellationsListDemo();
   }
 }

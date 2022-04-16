@@ -62,7 +62,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
       body: SafeArea(
           child: Stack(
         children: <Widget>[
-          _buildAppBar(),
+          // _buildAppBar(),
           //Create a Hero tagged to match the instance details view
           Hero(
             tag: 'hero-speaker',

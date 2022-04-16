@@ -21,7 +21,7 @@ class SpendingAppBar extends StatelessWidget with PreferredSizeWidget {
               child: Icon(
                 Icons.menu,
                 color: Colors.white,
-                size: 28,
+                size: 24,
               ),
             ),
             HeaderRow(),

@@ -8,11 +8,17 @@ import 'main.dart';
 class ProductDetailsTransition extends StatelessWidget {
   final double animationValue;
   final CurvedAnimation _curvedAnimation;
-  final TextStyle bodyStyle =
-      TextStyle(fontFamily: 'WorkSans', fontWeight: FontWeight.bold, fontSize: 16, letterSpacing: 2, package: App.pkg);
+  final TextStyle bodyStyle = TextStyle(
+      fontFamily: 'WorkSans',
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      letterSpacing: 2,
+      package: App.pkg);
 
   ProductDetailsTransition({Key key, this.animationValue = 1})
-      : _curvedAnimation = CurvedAnimation(curve: Interval(0, .8, curve: Curves.easeOut), parent: AlwaysStoppedAnimation(animationValue)),
+      : _curvedAnimation = CurvedAnimation(
+            curve: Interval(0, .8, curve: Curves.easeOut),
+            parent: AlwaysStoppedAnimation(animationValue)),
         super(key: key);
 
   @override
@@ -51,13 +57,16 @@ class ProductDetailsTransition extends StatelessWidget {
         ScaleTransition(
           scale: Tween<double>(begin: .6, end: 1).animate(_curvedAnimation),
           child: SlideTransition(
-            position: Tween<Offset>(begin: Offset(.6, .7), end: Offset(.1, .95)).animate(_curvedAnimation),
+            position: Tween<Offset>(begin: Offset(.6, .7), end: Offset(.1, 1))
+                .animate(_curvedAnimation),
             child: FadeTransition(
-                opacity: Tween<double>(begin: 0, end: 1).animate(_getCurvedAnimWithInterval(.2, 1)),
+                opacity: Tween<double>(begin: 0, end: 1)
+                    .animate(_getCurvedAnimWithInterval(.2, 1)),
                 child: Transform(
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.01)
-                    ..rotateY(Tween<double>(begin: -.09, end: 0).transform(CurvedAnimation(
+                    ..rotateY(Tween<double>(begin: -.09, end: 0)
+                        .transform(CurvedAnimation(
                       curve: Interval(0, .8),
                       parent: AlwaysStoppedAnimation(animationValue),
                     ).value)),
@@ -68,11 +77,20 @@ class ProductDetailsTransition extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text('Perfect Sound'.toUpperCase(),
-                            style: bodyStyle.copyWith(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 52, height: .9)),
+                            style: bodyStyle.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 52,
+                                height: .9)),
                         Text(
                           'This is our best speaker yet.',
                           textAlign: TextAlign.start,
-                          style: bodyStyle.copyWith(color: Colors.white, height: 1.5, fontWeight: FontWeight.w600, fontSize: 20),
+                          style: bodyStyle.copyWith(
+                            color: Colors.white,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
                         ),
                       ],
                     ),
@@ -85,11 +103,14 @@ class ProductDetailsTransition extends StatelessWidget {
   }
 
   CurvedAnimation _getCurvedAnimWithInterval(double begin, double end) {
-    return CurvedAnimation(curve: Interval(begin, end), parent: _curvedAnimation);
+    return CurvedAnimation(
+        curve: Interval(begin, end), parent: _curvedAnimation);
   }
 
   CurvedAnimation _getAttributeAnimWithInterval(double begin, double end) {
-    var attributeAnim = CurvedAnimation(curve: Interval(.65, 1), parent: AlwaysStoppedAnimation(animationValue));
+    var attributeAnim = CurvedAnimation(
+        curve: Interval(.65, 1),
+        parent: AlwaysStoppedAnimation(animationValue));
     return CurvedAnimation(curve: Interval(begin, end), parent: attributeAnim);
   }
 }
@@ -99,21 +120,30 @@ class _SpeakerAttribute extends StatelessWidget {
   final Animation animation;
   final String attribute;
 
-  const _SpeakerAttribute({Key key, this.lineHeight = 150, this.attribute, this.animation}) : super(key: key);
+  const _SpeakerAttribute(
+      {Key key, this.lineHeight = 150, this.attribute, this.animation})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double lineHeight = Tween<double>(begin: 0, end: this.lineHeight).transform(Curves.easeInOutQuad.transform(animation.value));
+    double lineHeight = Tween<double>(begin: 0, end: this.lineHeight)
+        .transform(Curves.easeInOutQuad.transform(animation.value));
     return Stack(
       overflow: Overflow.visible,
       children: <Widget>[
         SlideTransition(
-          position: Tween<Offset>(begin: Offset(0, -.5), end: Offset.zero).animate(_getAnimationWithInterval(.2, 1)),
+          position: Tween<Offset>(begin: Offset(0, -.5), end: Offset.zero)
+              .animate(_getAnimationWithInterval(.2, 1)),
           child: FadeTransition(
             opacity: _getAnimationWithInterval(.15, .95),
             child: Text(
               attribute,
-              style: TextStyle(fontFamily: 'WorkSans', letterSpacing: 3, color: Colors.white, fontSize: 13.5, package: App.pkg),
+              style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontSize: 13.5,
+                  package: App.pkg),
             ),
           ),
         ),
@@ -133,7 +163,8 @@ class _SpeakerAttribute extends StatelessWidget {
           top: lineHeight + 17,
           left: 5,
           child: FadeTransition(
-            opacity: Tween<double>(begin: 0, end: 1).animate(_getAnimationWithInterval(0, .3)),
+            opacity: Tween<double>(begin: 0, end: 1)
+                .animate(_getAnimationWithInterval(0, .3)),
             child: CustomPaint(
                 painter: CirclePainter(
               radius: 3,
