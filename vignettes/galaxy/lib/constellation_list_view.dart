@@ -13,7 +13,9 @@ class ConstellationListView extends StatefulWidget {
   final void Function(double) onScrolled;
   final void Function(ConstellationData, bool) onItemTap;
 
-  const ConstellationListView({Key key, this.onScrolled, this.onItemTap, @required this.constellations}) : super(key: key);
+  const ConstellationListView(
+      {Key key, this.onScrolled, this.onItemTap, @required this.constellations})
+      : super(key: key);
 
   @override
   _ConstellationListViewState createState() => _ConstellationListViewState();
@@ -82,7 +84,12 @@ class _ConstellationListViewState extends State<ConstellationListView> {
       top: 16,
       child: Text(
         "GUIDE TO THE STARS",
-        style: TextStyle(color: Colors.white, fontSize: 28, fontFamily: Fonts.Header, height: 1.05, package: App.pkg),
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: Fonts.Header,
+            height: 1.05,
+            package: App.pkg),
       ),
     );
   }
@@ -103,13 +110,18 @@ class _ConstellationListViewState extends State<ConstellationListView> {
 
   Positioned _buildLocationText() {
     return Positioned(
-      width: 120,
+      width: 140,
       right: 16,
       top: 12,
       child: Text(
         "New York City (USA, NY) 40.71 °N - 74.01 °W",
         textAlign: TextAlign.right,
-        style: TextStyle(color: Colors.grey, fontSize: 10, fontFamily: Fonts.Content, height: 1.8, package: App.pkg),
+        style: TextStyle(
+            color: Colors.grey,
+            fontSize: 12,
+            fontFamily: Fonts.Content,
+            height: 1.8,
+            package: App.pkg),
       ),
     );
   }

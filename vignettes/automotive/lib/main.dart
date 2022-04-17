@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> demos = const ['Wallpaper', 'Statistics', 'Music', 'Shopping', 'Disclaimer'];
+  List<String> demos = const ['Wallpaper', 'Statistics', 'Music', 'Shopping'];
   String mode = 'Wallpaper';
   Color themeColor = Color(0xFFD96C00);
 
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
     if (mode == 'Wallpaper') return '壁纸';
     if (mode == 'Music') return '音乐';
     if (mode == 'Shopping') return '购物';
-    return '声明';
+    return '';
   }
 
   Widget _buildDemo() {

@@ -158,13 +158,11 @@ class _Indie3dHomeState extends State<Indie3dHome> with TickerProviderStateMixin
 
   bool _handleScroll(ScrollUpdateNotification scrollUpdate) {
     setState(() {
-      final appSize = MediaQuery.of(context).size;
-      double pageProgress = (1.0 -
-                  ((scrollUpdate.metrics.pixels / appSize.width) - _pageIndex)
-                      .abs()
-                      .clamp(0.0, 1.0)) *
-              2.0 -
-          1.0;
+      final appWidth = MediaQuery.of(context).size.width * 0.8;
+      double pageProgress =
+          (1.0 - ((scrollUpdate.metrics.pixels / appWidth) - _pageIndex).abs().clamp(0.0, 1.0)) *
+                  2.0 -
+              1.0;
       _controller.cameraOffset = (1 - pageProgress) * 8.0 * scrollUpdate.scrollDelta.sign;
 
       double animValue = 0;
