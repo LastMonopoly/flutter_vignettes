@@ -47,8 +47,21 @@ dependencies:
     path: ../zoom_animation
 
 dev_dependencies:
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/Davenchy/flutter_launcher_icons.git
+      ref: fixMinSdkParseFlutter2.8
+  flutter_native_splash: ^2.1.5
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/app_icon.png"
+  remove_alpha_ios: true
+flutter_native_splash:
+  color: "#000000"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

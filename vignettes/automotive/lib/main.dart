@@ -41,8 +41,7 @@ class _MyAppState extends State<MyApp> {
                     Text(
                       _translate(m),
                       style: TextStyle(
-                        fontSize: 15,
-                        letterSpacing: .5,
+                        fontSize: 16,
                         color: m == mode ? themeColor : Colors.white,
                         fontWeight: m == mode ? FontWeight.w600 : FontWeight.w400,
                       ),
@@ -51,7 +50,7 @@ class _MyAppState extends State<MyApp> {
                     Text(
                       m,
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 18,
                         fontFamily: 'Unica',
                         color: m == mode ? themeColor : Colors.white,
                         fontWeight: m == mode ? FontWeight.w600 : FontWeight.w400,
