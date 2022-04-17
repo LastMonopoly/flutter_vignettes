@@ -10,7 +10,7 @@ class HeaderRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Budget",
+          Text("Expense",
               style: TextStyle(color: Colors.white, fontSize: 17, fontFamily: 'TitilliumWeb')),
           Text("Tracker",
               style:

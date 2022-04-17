@@ -72,10 +72,10 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
       }
     }
 
-    final appSize = MediaQuery.of(context).size;
+    final appWidth = MediaQuery.of(context).size.width * 0.8;
 
     return GestureDetector(
-      onTapUp: (details) => _handleTap(appSize, details),
+      onTapUp: (details) => _handleTap(appWidth, details),
       onHorizontalDragStart: (_) => _handleStartInteract(context),
       onHorizontalDragUpdate: _handleDrag,
       onHorizontalDragEnd: (_) => _handleEndInteract(context),
@@ -92,7 +92,7 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
           overflow: Overflow.visible,
           children: [
             Container(
-              width: appSize.width,
+              width: appWidth,
               height: 150 * ScalingInfo.scaleY,
               child: CustomPaint(
                   painter: ChartBackgroundPainter(widget.chart),
@@ -122,7 +122,7 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
               ),
             ),
             Positioned(
-              left: appSize.width - 24,
+              left: appWidth - 24,
               height: 150 * ScalingInfo.scaleY,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,8 +130,8 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
               ),
             ),
             if (widget.chart.selectedDataPoint != -1) ...{
-              _buildLabel(appSize, label0Text, labelStyle, label0Y),
-              _buildLabel(appSize, label1Text, labelStyle, label1Y),
+              _buildLabel(appWidth, label0Text, labelStyle, label0Y),
+              _buildLabel(appWidth, label1Text, labelStyle, label1Y),
             },
           ],
         ),
@@ -139,9 +139,9 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
     );
   }
 
-  Widget _buildLabel(Size appSize, String text, TextStyle style, double y) {
+  Widget _buildLabel(double appWidth, String text, TextStyle style, double y) {
     return Positioned(
-      left: appSize.width * widget.chart.selectedX() * 0.8,
+      left: appWidth * widget.chart.selectedX(),
       top: y,
       width: 60,
       child: Container(
@@ -154,8 +154,8 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
     );
   }
 
-  void _handleTap(Size appSize, TapUpDetails details) {
-    final x = (details.localPosition.dx - 28) / appSize.width;
+  void _handleTap(double appWidth, TapUpDetails details) {
+    final x = (details.localPosition.dx - 28) / appWidth;
     final offset = lerp(widget.chart.domainStart, widget.chart.domainEnd, x);
     if (offset.round() != widget.chart.selectedDataPoint) {
       widget.chart.selectedDataPoint = offset.round();

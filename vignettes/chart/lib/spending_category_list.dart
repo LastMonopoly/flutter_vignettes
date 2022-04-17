@@ -63,19 +63,19 @@ class _SpendingCategoryListState extends State<SpendingCategoryList> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CirclePercentageWidget(
-                title: 'Bills',
+                title: 'Charging',
                 percent: percent0,
                 color0: Color(0xFFA577E4),
                 color1: Color(0xFF775F99),
               ),
               CirclePercentageWidget(
-                title: 'Personal',
+                title: 'Insurance',
                 percent: percent1,
                 color0: Color(0xFF8DE4CA),
                 color1: Color(0xFF509983),
               ),
               CirclePercentageWidget(
-                title: 'Restaurants',
+                title: 'Maintenance',
                 percent: percent2,
                 color0: Color(0xFFE38C8C),
                 color1: Color(0xFF995E5E),
