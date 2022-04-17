@@ -61,10 +61,11 @@ class _TextTransitionState extends State<TextTransition> with SingleTickerProvid
 
   @override
   Widget build(context) {
-    final double width = widget.width != null ? widget.width : _string0.length * widget.textStyle.fontSize / 1.4;
+    final double width =
+        widget.width != null ? widget.width : _string0.length * widget.textStyle.fontSize / 1.4;
     return Container(
       width: width,
-      height: widget.textStyle.fontSize * 1.2,
+      height: widget.textStyle.fontSize * 1.4,
       child: Stack(
         children: [
           Positioned(

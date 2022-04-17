@@ -70,7 +70,7 @@ class SpendingDateRange extends StatelessWidget {
               ),
             ],
           ),
-          Padding(padding: EdgeInsets.all(15)),
+          Padding(padding: EdgeInsets.all(20)),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

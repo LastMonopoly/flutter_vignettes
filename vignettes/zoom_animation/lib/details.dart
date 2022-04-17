@@ -28,8 +28,7 @@ class ProductDetailView extends StatelessWidget {
                     width: frameWidth,
                     height: frameHeight,
                     child: Sprite(
-                        image: AssetImage("images/speaker_sprite.png",
-                            package: App.pkg),
+                        image: AssetImage("images/speaker_sprite.png", package: App.pkg),
                         frameWidth: 360,
                         frameHeight: 500,
                         frame: 59)),
@@ -38,28 +37,24 @@ class ProductDetailView extends StatelessWidget {
             Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                    width: frameWidth,
-                    height: frameHeight,
-                    child: ProductDetailsTransition())),
+                    width: frameWidth, height: frameHeight, child: ProductDetailsTransition())),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding:
-                    const EdgeInsets.only(bottom: 18.0, left: 76, right: 76),
+                padding: const EdgeInsets.only(bottom: 18.0, left: 76, right: 76),
                 child: MaterialButton(
                   height: 55,
                   minWidth: double.infinity,
                   onPressed: () {},
                   color: Colors.white,
                   textColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                   child: Text(
                     'Buy Now \$349.95'.toUpperCase(),
                     style: TextStyle(
                         fontFamily: 'WorkSans',
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 20,
                         letterSpacing: 2,
                         package: App.pkg),
                   ),

@@ -16,37 +16,52 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> demos = const ['chart', 'carousel', 'zoom', 'galaxy'];
-  String mode = 'chart';
+  List<String> demos = const ['Wallpaper', 'Statistics', 'Music', 'Shopping'];
+  String mode = 'Wallpaper';
+  Color themeColor = Color(0xFFD96C00);
 
   Widget _buildSelector() {
-    return Row(
-      children: [
-        for (String m in demos)
-          Expanded(
-            child: GestureDetector(
+    return Container(
+      color: Colors.black,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          for (String m in demos)
+            GestureDetector(
               onTap: () {
                 setState(() {
                   mode = m;
                 });
               },
-              child: Container(
-                color: Colors.black,
-                child: Center(
-                  child: Text(m, style: TextStyle(color: Colors.white)),
+              child: Center(
+                child: Text(
+                  m,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontFamily: 'Unica',
+                    color: m == mode ? themeColor : Colors.white,
+                    fontWeight: m == mode ? FontWeight.w600 : FontWeight.w400,
+                  ),
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 
+  String _translate() {
+    if (mode == 'Statistics') return '统计';
+    if (mode == 'Wallpaper') return '壁纸';
+    if (mode == 'Music') return '音乐';
+    return '购物';
+  }
+
   Widget _buildDemo() {
-    if (mode == 'chart') return chart.App();
-    if (mode == 'galaxy') return galaxy.App();
-    if (mode == 'carousel') return carousel.App();
-    if (mode == 'zoom') return zoom_animation.App();
+    if (mode == 'Statistics') return chart.App();
+    if (mode == 'Wallpaper') return galaxy.App();
+    if (mode == 'Music') return carousel.App();
+    if (mode == 'Shopping') return zoom_animation.App();
 
     return SizedBox.shrink();
   }
@@ -56,12 +71,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          body: Column(
-            children: [
-              Expanded(child: _buildSelector()),
-              Expanded(flex: 10, child: _buildDemo()),
-            ],
-          ),
+          body: Builder(builder: (context) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.5),
+              child: Row(
+                children: [
+                  Expanded(child: _buildSelector()),
+                  Expanded(flex: 4, child: _buildDemo()),
+                ],
+              ),
+            );
+          }),
         ),
       ),
     );

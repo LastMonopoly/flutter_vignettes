@@ -27,7 +27,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
   TextStyle bodyStyle = TextStyle(
       fontFamily: 'WorkSans',
       fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontSize: 14,
       letterSpacing: 2,
       package: App.pkg);
 
@@ -36,8 +36,8 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
     super.initState();
     _isFirstInit = true;
     _buttonAlpha = 0;
-    _transitionAnimController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1600));
+    _transitionAnimController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1600));
     _transitionIn();
   }
 
@@ -67,8 +67,8 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
           Hero(
             tag: 'hero-speaker',
             //Use a custom flightShuttleBuilder to control the hero transition
-            flightShuttleBuilder: (flightContext, animation, flightDirection,
-                fromHeroContext, toHeroContext) {
+            flightShuttleBuilder:
+                (flightContext, animation, flightDirection, fromHeroContext, toHeroContext) {
               return ProductDetailsHeroFlight(
                 animation: animation,
                 toHeroContext: toHeroContext,
@@ -83,8 +83,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
                   width: _frameWidth,
                   height: _frameHeight,
                   child: Sprite(
-                      image: AssetImage("images/speaker_sprite.png",
-                          package: App.pkg),
+                      image: AssetImage("images/speaker_sprite.png", package: App.pkg),
                       frameWidth: 360,
                       frameHeight: 500,
                       frame: 1)),
@@ -108,7 +107,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
             alignment: Alignment.bottomCenter,
             child: Container(
               width: double.infinity,
-              height: _screenSize.height * .43,
+              height: _screenSize.height * .4,
               margin: EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -147,10 +146,8 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
 
   Widget _buildSpeakerDescription() {
     return SlideTransition(
-      position: Tween(begin: Offset.zero, end: Offset(-.1, 0)).animate(
-          CurvedAnimation(
-              curve: Interval(.5, 1, curve: Curves.easeOut),
-              parent: _transitionAnimController)),
+      position: Tween(begin: Offset.zero, end: Offset(-.1, 0)).animate(CurvedAnimation(
+          curve: Interval(.5, 1, curve: Curves.easeOut), parent: _transitionAnimController)),
       child: Column(
         children: <Widget>[
           Text('Classic Speaker 2700'.toUpperCase(),
@@ -166,10 +163,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
               'This speaker provides a home soundscape unlike any other with its high quality sound and sleek design. You won\'t believe it until you hear it.',
               textAlign: TextAlign.start,
               style: bodyStyle.copyWith(
-                  color: Colors.white,
-                  fontSize: 12,
-                  letterSpacing: 2.8,
-                  height: 1.3))
+                  color: Colors.white, fontSize: 12, letterSpacing: 2.8, height: 1.3))
         ],
       ),
     );
@@ -229,9 +223,7 @@ class _ProductDetailZoomDemoState extends State<ProductDetailZoomDemo>
     //Fade button out
     setState(() => _buttonAlpha = 0);
     //Kick off main animation sequence
-    _transitionAnimController
-        .forward()
-        .whenComplete(() => _transitionAnimController.reset());
+    _transitionAnimController.forward().whenComplete(() => _transitionAnimController.reset());
     //Wait a bit to let the btn fade out
     await Future.delayed(Duration(milliseconds: 300));
     //Show new page route, which will place the Hero on top of everything

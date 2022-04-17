@@ -5,7 +5,6 @@ import 'components/text_transition.dart';
 import 'globals.dart';
 import 'app_colors.dart';
 
-
 class SpendingIncomeExpensesHeader extends StatelessWidget {
   final Chart chart;
 
@@ -98,7 +97,7 @@ class _SummaryColumn extends StatelessWidget {
           color: AppColors.colorText1,
           fontFamily: 'Lato',
           fontWeight: FontWeight.w200,
-          fontSize: 8,
+          fontSize: 12,
         ),
       ),
     ]);

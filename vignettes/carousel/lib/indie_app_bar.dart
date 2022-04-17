@@ -10,8 +10,8 @@ class IndieAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-          child: Icon(Icons.menu, size: 28),
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          child: Icon(Icons.volume_up_rounded, size: 28),
           // child: SizedBox(height: 32),
         ),
         Container(
@@ -25,7 +25,7 @@ class IndieAppBar extends StatelessWidget {
               fontFamily: 'Staatliches',
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              fontSize: 10.5,
+              fontSize: 11,
             ),
           ),
           padding: EdgeInsets.only(top: 8, bottom: 8, left: 50, right: 16),

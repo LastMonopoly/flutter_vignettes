@@ -22,7 +22,8 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
 
   @override
   void initState() {
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 600), value: 1.0);
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 600), value: 1.0);
     _controller.addListener(() {
       setState(() {});
     });
@@ -58,10 +59,10 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
     String label0Text, label1Text;
     double label0Y, label1Y;
     if (widget.chart.selectedDataPoint != -1) {
-      label0Text =
-          numberToPriceString((widget.chart.dataSets[0].values[widget.chart.selectedDataPoint] * 1000).round());
-      label1Text =
-          numberToPriceString((widget.chart.dataSets[1].values[widget.chart.selectedDataPoint] * 1000).round());
+      label0Text = numberToPriceString(
+          (widget.chart.dataSets[0].values[widget.chart.selectedDataPoint] * 1000).round());
+      label1Text = numberToPriceString(
+          (widget.chart.dataSets[1].values[widget.chart.selectedDataPoint] * 1000).round());
       label0Y = 150 * ScalingInfo.scaleY * (1.0 - widget.chart.selectedY(0)) + 10;
       label1Y = 150 * ScalingInfo.scaleY * (1.0 - widget.chart.selectedY(1)) + 10;
       // Resolve label intersection
@@ -140,9 +141,9 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
 
   Widget _buildLabel(Size appSize, String text, TextStyle style, double y) {
     return Positioned(
-      left: appSize.width * widget.chart.selectedX() + 8,
+      left: appSize.width * widget.chart.selectedX() * 0.8,
       top: y,
-      width: 40,
+      width: 60,
       child: Container(
         color: Color(0x99252B40).withOpacity(_controller.value < 0.6 ? _controller.value : 0.6),
         padding: EdgeInsets.all(4),
@@ -194,7 +195,8 @@ class _SpendingGraphState extends State<SpendingGraph> with SingleTickerProvider
 
   void _handleDrag(DragUpdateDetails details) {
     final d = -details.primaryDelta / 200 * (widget.chart.domainEnd - widget.chart.domainStart);
-    if (widget.chart.domainStart + d < 0 || widget.chart.domainEnd + d >= widget.chart.maxDomain) return;
+    if (widget.chart.domainStart + d < 0 || widget.chart.domainEnd + d >= widget.chart.maxDomain)
+      return;
     if (d < 0) {
       widget.chart.domainStart += d;
       widget.chart.domainEnd += d;
