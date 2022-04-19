@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.automotive">
    <application
-        android:label="Infotainment"
+        android:label="Infotainment / HMI"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

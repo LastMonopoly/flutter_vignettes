@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> demos = const ['Wallpaper', 'Statistics', 'Music', 'Shopping'];
+  List<String> demos = const ['Wallpaper', 'Chart', 'Music', 'Shopping'];
   String mode = 'Wallpaper';
   Color themeColor = Color(0xFFD96C00);
 
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   String _translate(String mode) {
-    if (mode == 'Statistics') return '统计';
+    if (mode == 'Chart') return '图表';
     if (mode == 'Wallpaper') return '壁纸';
     if (mode == 'Music') return '音乐';
     if (mode == 'Shopping') return '购物';
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget _buildDemo() {
-    if (mode == 'Statistics') return chart.App();
+    if (mode == 'Chart') return chart.App();
     if (mode == 'Wallpaper') return galaxy.App();
     if (mode == 'Music') return carousel.App();
     if (mode == 'Shopping') return zoom_animation.App();
